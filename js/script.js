@@ -1,3 +1,37 @@
+const filtroCategoria = document.getElementById("filtro-categoria");
+const tarjetas = document.querySelectorAll(".tarjeta");
+
+filtroCategoria.addEventListener("change", (e) => {
+    const categoriaSeleccionada = e.target.value;
+
+    tarjetas.forEach(tarjeta => {
+        const categoriaTarjeta = tarjeta.getAttribute("data-categoria");
+
+        if (categoriaSeleccionada === "todos" || categoriaSeleccionada === categoriaTarjeta) {
+            tarjeta.style.display = "";
+        } else {
+            tarjeta.style.display = "none";
+        }
+    });
+});
+
+const botonesDetalle = document.querySelectorAll(".btn-detalle");
+
+    botonesDetalle.forEach(boton => {
+        boton.addEventListener("click", (e) => {
+            const tarjeta = e.target.closest(".tarjeta");
+            const descripcion = tarjeta.querySelector(".tarjeta-descripcion");
+
+            if (descripcion.style.display === "none" || descripcion.style.display === "") {
+                descripcion.style.display = "block";
+                e.target.textContent = "Ocultar Detalle";
+            } else {
+                descripcion.style.display = "none";
+                e.target.textContent = "Ver Detalle";
+            }
+        });
+    });
+
 const formulario = document.getElementById("form-contacto");
 const inputNombre = document.getElementById("nombre");
 const inputCorreo = document.getElementById("correo");
@@ -6,6 +40,7 @@ const inputMensaje = document.getElementById("mensaje");
 
 const mensajeExito = document.getElementById("form-exito");
 const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 
 formulario.addEventListener("submit", function () {
     event.preventDefault();
