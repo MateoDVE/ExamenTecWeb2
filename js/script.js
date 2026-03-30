@@ -28,19 +28,27 @@ if (menuToggle && headerNav) {
 
 const filtroCategoria = document.getElementById("filtro-categoria");
 const tarjetas = document.querySelectorAll(".tarjeta");
-
+const contadorServicios = document.getElementById("contador-servicios");
 filtroCategoria.addEventListener("change", function() {
     const categoriaSeleccionada = filtroCategoria.value;
+    let serviciosVisibles = 0;
 
     tarjetas.forEach(tarjeta => {
         const categoriaTarjeta = tarjeta.getAttribute("data-categoria");
 
         if (categoriaSeleccionada === "todos" || categoriaSeleccionada === categoriaTarjeta) {
             tarjeta.style.display = "";
+            serviciosVisibles++;
         } else {
             tarjeta.style.display = "none";
         }
     });
+
+    if (serviciosVisibles === 1) {
+        contadorServicios.textContent = 'Mostrando 1 resultado';
+    } else {
+        contadorServicios.textContent = `Mostrando ${serviciosVisibles} resultados`;
+    }
 });
 
 const botonesDetalle = document.querySelectorAll(".btn-detalle");
