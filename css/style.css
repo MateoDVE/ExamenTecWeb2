@@ -110,8 +110,6 @@ main {
 }
 .btn.btn-primary:hover {
   transform: translateY(-1px);
-}
-.btn.btn-primary:hover {
   background: #1d4ed8;
 }
 .btn.btn-secondary {
@@ -128,8 +126,6 @@ main {
 }
 .btn.btn-secondary:hover {
   transform: translateY(-1px);
-}
-.btn.btn-secondary:hover {
   background: #1d4ed8;
 }
 
