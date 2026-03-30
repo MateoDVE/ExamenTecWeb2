@@ -1,8 +1,8 @@
 const filtroCategoria = document.getElementById("filtro-categoria");
 const tarjetas = document.querySelectorAll(".tarjeta");
 
-filtroCategoria.addEventListener("change", (e) => {
-    const categoriaSeleccionada = e.target.value;
+filtroCategoria.addEventListener("change", () => {
+    const categoriaSeleccionada = filtroCategoria.value;
 
     tarjetas.forEach(tarjeta => {
         const categoriaTarjeta = tarjeta.getAttribute("data-categoria");
@@ -17,20 +17,20 @@ filtroCategoria.addEventListener("change", (e) => {
 
 const botonesDetalle = document.querySelectorAll(".btn-detalle");
 
-    botonesDetalle.forEach(boton => {
-        boton.addEventListener("click", (e) => {
-            const tarjeta = e.target.closest(".tarjeta");
-            const descripcion = tarjeta.querySelector(".tarjeta-descripcion");
+botonesDetalle.forEach(boton => {
+    boton.addEventListener("click", () => {
+        const tarjeta = boton.closest(".tarjeta");
+        const descripcion = tarjeta.querySelector(".tarjeta-descripcion");
 
-            if (descripcion.style.display === "none" || descripcion.style.display === "") {
-                descripcion.style.display = "block";
-                e.target.textContent = "Ocultar Detalle";
-            } else {
-                descripcion.style.display = "none";
-                e.target.textContent = "Ver Detalle";
-            }
-        });
+        if (descripcion.style.display === "none" || descripcion.style.display === "") {
+            descripcion.style.display = "block";
+            boton.textContent = "Ocultar Detalle";
+        } else {
+            descripcion.style.display = "none";
+            boton.textContent = "Ver Detalle";
+        }
     });
+});
 
 const formulario = document.getElementById("form-contacto");
 const inputNombre = document.getElementById("nombre");
@@ -40,7 +40,6 @@ const inputMensaje = document.getElementById("mensaje");
 
 const mensajeExito = document.getElementById("form-exito");
 const regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
 
 formulario.addEventListener("submit", function () {
     event.preventDefault();
