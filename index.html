@@ -1,16 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-
+    <titulo>Catalogo Interactivo de Servicios Digitales</titulo>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
 
+    <header class="header">
+        <div class="header-logo">
+            <h1>TechSolutions</h1>
+        </div>
+        <nav class="header-nav">
+            <ul>
+                <li><a href="#hero">Inicio</a></li>
+                <li><a href="#servicios">Catálogo</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="hero-content">
+                <h2 class="hero-titulo">Impulsamos tu presencia digital</h2>
+                <p class="hero-descripcion">Soluciones tecnológicas escalables para llevar tu negocio al siguiente
+                    nivel.</p>
+                <button class="btn btn-primary" id="btn-hero">Descubrir más</button>
+            </div>
+        </section>
+
+        <section id="servicios" class="servicios">
+            <div class="servicios-header">
+                <h2>Catálogo de Servicios</h2>
+
+                <div class="servicios-interaccion" id="zona-filtros">
+                    <label for="filtro-categoria">Filtrar servicios:</label>
+                    <select id="filtro-categoria">
+                        <option value="todos">Mostrar Todos</option>
+                        <option value="desarrollo-web">Desarrollo Web</option>
+                        <option value="diseno-ui-ux">Diseño UI/UX</option>
+                        <option value="marketing-digital">Marketing Digital</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="servicios-grid" id="contenedor-tarjetas">
+
+                <article class="tarjeta" data-categoria="desarrollo-web">
+                    <h3 class="tarjeta-titulo">Desarrollo Web Corporativo</h3>
+                    <p class="tarjeta-descripcion">Sitios web institucionales optimizados y autogestionables.</p>
+                    <span class="tarjeta-categoria">Desarrollo Web</span>
+                    <p class="tarjeta-precio">Desde $500</p>
+                    <button class="btn btn-secondary btn-detalle">Ver Detalle</button>
+                </article>
+
+                <article class="tarjeta" data-categoria="diseno-ui-ux">
+                    <h3 class="tarjeta-titulo">Diseño de Interfaces (UI)</h3>
+                    <p class="tarjeta-descripcion">Diseño visual moderno, accesible y centrado en el usuario.</p>
+                    <span class="tarjeta-categoria">Diseño UI/UX</span>
+                    <p class="tarjeta-precio">Desde $300</p>
+                    <button class="btn btn-secondary btn-detalle">Ver Detalle</button>
+                </article>
+
+                <article class="tarjeta" data-categoria="marketing-digital">
+                    <h3 class="tarjeta-titulo">Gestión de Redes Sociales</h3>
+                    <p class="tarjeta-descripcion">Estrategias de contenido y community management mensual.</p>
+                    <span class="tarjeta-categoria">Marketing Digital</span>
+                    <p class="tarjeta-precio">Desde $200/mes</p>
+                    <button class="btn btn-secondary btn-detalle">Ver Detalle</button>
+                </article>
+
+                <article class="tarjeta" data-categoria="desarrollo-web">
+                    <h3 class="tarjeta-titulo">E-commerce Dinámico</h3>
+                    <p class="tarjeta-descripcion">Tiendas online completas con pasarela de pagos integrada.</p>
+                    <span class="tarjeta-categoria">Desarrollo Web</span>
+                    <p class="tarjeta-precio">Desde $800</p>
+                    <button class="btn btn-secondary btn-detalle">Ver Detalle</button>
+                </article>
+
+                <article class="tarjeta" data-categoria="diseno-ui-ux">
+                    <h3 class="tarjeta-titulo">Auditoría UX Integral</h3>
+                    <p class="tarjeta-descripcion">Análisis heurístico y mejora de la experiencia de usuario.</p>
+                    <span class="tarjeta-categoria">Diseño UI/UX</span>
+                    <p class="tarjeta-precio">Nivel: Avanzado</p>
+                    <button class="btn btn-secondary btn-detalle">Ver Detalle</button>
+                </article>
+
+                <article class="tarjeta" data-categoria="marketing-digital">
+                    <h3 class="tarjeta-titulo">Campañas SEO y SEM</h3>
+                    <p class="tarjeta-descripcion">Posicionamiento orgánico y pauta publicitaria en buscadores.</p>
+                    <span class="tarjeta-categoria">Marketing Digital</span>
+                    <p class="tarjeta-precio">Desde $400/mes</p>
+                    <button class="btn btn-secondary btn-detalle">Ver Detalle</button>
+                </article>
+
+            </div>
+        </section>
+
+        <section id="contacto" class="contacto">
+            <h2>Solicita una Cotización</h2>
+            <form id="form-contacto" class="form" novalidate>
+
+                <div class="form-group">
+                    <label for="nombre">Nombre completo:</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan Pérez" required>
+                    <span class="form-error" id="error-nombre"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="correo">Correo electrónico:</label>
+                    <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" required>
+                    <span class="form-error" id="error-correo"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo-servicio">Servicio de interés:</label>
+                    <select id="tipo-servicio" name="tipo-servicio" required>
+                        <option value="">Selecciona una opción...</option>
+                        <option value="desarrollo">Desarrollo Web</option>
+                        <option value="diseno">Diseño UI/UX</option>
+                        <option value="marketing">Marketing Digital</option>
+                    </select>
+                    <span class="form-error" id="error-servicio"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" rows="4"
+                        placeholder="Cuéntanos los detalles de tu requerimiento..." required></textarea>
+                    <span class="form-error" id="error-mensaje"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+                <p id="form-exito" class="form-mensaje-exito" hidden>¡Tu solicitud ha sido enviada con éxito!</p>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2026 TechSolutions.</p>
+            <p>Innovación tecnológica desde Cochabamba, Bolivia.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
 
 </html>
