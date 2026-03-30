@@ -1,0 +1,353 @@
+// Colores de Marca
+$color-primary: #2563eb;
+$color-primary-hover: #1d4ed8;
+$color-secondary: #0f172a;
+
+// Colores de Fondo y Superficie
+$color-bg: #f8fafc;
+$color-surface: #ffffff;
+
+// Textos y Bordes
+$color-text-main: #334155;
+$color-text-muted: #64748b;
+$color-text-light: #ffffff;
+$color-border: #cbd5e1;
+
+// Estados
+$color-error: #ef4444;
+$color-success: #10b981;
+
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 16px;
+
+$bp-tablet: 768px;
+$bp-desktop: 1024px;
+
+@mixin container {
+	width: min(1100px, 100% - 2rem);
+	margin-inline: auto;
+}
+
+@mixin button-base($bg, $color) {
+	border: 1px solid transparent;
+	border-radius: $radius-sm;
+	background: $bg;
+	color: $color;
+	font-size: 0.95rem;
+	font-weight: 600;
+	line-height: 1.2;
+	padding: 0.75rem 1rem;
+	cursor: pointer;
+	transition: background-color 0.2s ease, transform 0.2s ease;
+
+	&:hover {
+		transform: translateY(-1px);
+	}
+}
+
+@mixin card {
+	background: $color-surface;
+	border: 1px solid $color-border;
+	border-radius: $radius-md;
+	box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	background: linear-gradient(180deg, #ffffff 0%, $color-bg 100%);
+	color: $color-text-main;
+	line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+p {
+	margin-top: 0;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.header {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	padding: 0.9rem clamp(1rem, 4vw, 2.5rem);
+	margin-top: 0;
+	background: linear-gradient(135deg, $color-secondary 0%, #1e293b 100%);
+	border: 0;
+	border-radius: 0;
+	box-shadow: 0 10px 26px rgba(15, 23, 42, 0.22);
+
+	.header-logo h1 {
+		margin-bottom: 0;
+		font-size: 1.35rem;
+		color: $color-text-light;
+		letter-spacing: 0.2px;
+	}
+
+	.header-nav ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.8rem;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.header-nav a {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.45rem 0.8rem;
+		border-radius: 999px;
+		border: 1px solid rgba(255, 255, 255, 0.16);
+		background: rgba(255, 255, 255, 0.06);
+		color: #dbeafe;
+		font-weight: 600;
+		transition: background-color 0.2s ease, color 0.2s ease,
+			border-color 0.2s ease, transform 0.2s ease;
+
+		&:hover {
+			background: $color-primary;
+			border-color: $color-primary;
+			color: $color-text-light;
+			transform: translateY(-1px);
+		}
+	}
+}
+
+main {
+	@include container;
+	display: grid;
+	gap: 1.5rem;
+	padding-bottom: 2rem;
+}
+
+.hero {
+	@include card;
+	padding: 1.4rem;
+
+	.hero-titulo {
+		font-size: 1.5rem;
+		margin-bottom: 0.75rem;
+	}
+
+	.hero-descripcion {
+		color: $color-text-muted;
+		margin-bottom: 1rem;
+		max-width: 60ch;
+	}
+}
+
+.btn {
+	&.btn-primary {
+		@include button-base($color-primary, $color-text-light);
+
+		&:hover {
+			background: $color-primary-hover;
+		}
+	}
+
+	&.btn-secondary {
+		@include button-base($color-secondary, $color-text-light);
+
+		&:hover {
+			background: $color-primary-hover;
+		}
+	}
+}
+
+.servicios {
+	.servicios-header {
+		display: grid;
+		gap: 0.9rem;
+		margin-bottom: 1rem;
+	}
+
+	.servicios-interaccion {
+		display: grid;
+		gap: 0.4rem;
+	}
+
+	#filtro-categoria {
+		width: 100%;
+		border: 1px solid $color-border;
+		border-radius: $radius-sm;
+		padding: 0.65rem;
+		font-size: 0.95rem;
+	}
+
+	.servicios-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1rem;
+	}
+
+	.tarjeta {
+		@include card;
+		padding: 1rem;
+		display: grid;
+		gap: 0.65rem;
+
+		.tarjeta-titulo {
+			margin-bottom: 0;
+			font-size: 1.07rem;
+		}
+
+		.tarjeta-descripcion {
+			color: $color-text-muted;
+			margin-bottom: 0;
+		}
+
+		.tarjeta-categoria {
+			display: inline-block;
+			width: fit-content;
+			border-radius: 999px;
+			background: #dbeafe;
+			color: $color-primary;
+			font-size: 0.82rem;
+			font-weight: 700;
+			padding: 0.25rem 0.65rem;
+		}
+
+		.tarjeta-precio {
+			margin-bottom: 0;
+			font-weight: 700;
+		}
+	}
+}
+
+.contacto {
+	@include card;
+	padding: 1.2rem;
+
+	h2 {
+		margin-bottom: 1rem;
+		color: $color-secondary;
+	}
+
+	.form {
+		display: grid;
+		gap: 0.95rem;
+	}
+
+	.form-group {
+		display: grid;
+		gap: 0.35rem;
+	}
+
+	label {
+		font-weight: 600;
+	}
+
+	input,
+	select,
+	textarea {
+		width: 100%;
+		border: 1px solid $color-border;
+		border-radius: $radius-sm;
+		padding: 0.7rem;
+		font: inherit;
+	}
+
+	.form-error {
+		min-height: 1.1rem;
+		color: $color-error;
+		font-size: 0.85rem;
+	}
+
+	.form-mensaje-exito {
+		color: $color-success;
+		font-weight: 600;
+		margin: 0;
+	}
+}
+
+.footer {
+	margin-top: 1.5rem;
+	border-top: 1px solid $color-border;
+	background: $color-secondary;
+
+	.footer-content {
+		@include container;
+		padding: 1rem 0 1.4rem;
+		color: $color-text-light;
+		font-size: 0.92rem;
+	}
+}
+
+@media (min-width: $bp-tablet) {
+	.header {
+		flex-direction: row;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0.9rem clamp(1.2rem, 4vw, 3rem);
+	}
+
+	.hero {
+		padding: 2rem;
+
+		.hero-titulo {
+			font-size: 1.95rem;
+		}
+	}
+
+	.servicios {
+		.servicios-header {
+			grid-template-columns: 1fr auto;
+			align-items: end;
+		}
+
+		.servicios-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 1.2rem;
+		}
+
+		.servicios-interaccion {
+			min-width: 240px;
+		}
+	}
+
+	.contacto {
+		padding: 1.5rem;
+	}
+}
+
+@media (min-width: $bp-desktop) {
+	main {
+		gap: 2rem;
+	}
+
+	.hero {
+		padding: 2.4rem;
+
+		.hero-titulo {
+			font-size: 2.25rem;
+		}
+	}
+
+	.servicios {
+		.servicios-grid {
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+		}
+	}
+
+	.contacto {
+		padding: 1.8rem;
+	}
+}
