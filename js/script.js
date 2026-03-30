@@ -1,3 +1,31 @@
+const menuToggle = document.getElementById("menu-toggle");
+const headerNav = document.getElementById("header-nav");
+const navLinks = document.querySelectorAll(".header-nav a");
+
+if (menuToggle && headerNav) {
+    menuToggle.addEventListener("click", () => {
+        const expanded = menuToggle.getAttribute("aria-expanded") === "true";
+        menuToggle.setAttribute("aria-expanded", String(!expanded));
+        headerNav.classList.toggle("is-open", !expanded);
+    });
+
+    navLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+            if (window.innerWidth < 768) {
+                menuToggle.setAttribute("aria-expanded", "false");
+                headerNav.classList.remove("is-open");
+            }
+        });
+    });
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768) {
+            menuToggle.setAttribute("aria-expanded", "false");
+            headerNav.classList.remove("is-open");
+        }
+    });
+}
+
 const filtroCategoria = document.getElementById("filtro-categoria");
 const tarjetas = document.querySelectorAll(".tarjeta");
 
