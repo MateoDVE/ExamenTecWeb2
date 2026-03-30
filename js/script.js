@@ -3,14 +3,14 @@ const headerNav = document.getElementById("header-nav");
 const navLinks = document.querySelectorAll(".header-nav a");
 
 if (menuToggle && headerNav) {
-    menuToggle.addEventListener("click", () => {
+    menuToggle.addEventListener("click", function () {
         const expanded = menuToggle.getAttribute("aria-expanded") === "true";
         menuToggle.setAttribute("aria-expanded", String(!expanded));
         headerNav.classList.toggle("is-open", !expanded);
     });
 
     navLinks.forEach((link) => {
-        link.addEventListener("click", () => {
+        link.addEventListener("click", function() {
             if (window.innerWidth < 768) {
                 menuToggle.setAttribute("aria-expanded", "false");
                 headerNav.classList.remove("is-open");
@@ -18,7 +18,7 @@ if (menuToggle && headerNav) {
         });
     });
 
-    window.addEventListener("resize", () => {
+    window.addEventListener("resize", function() {
         if (window.innerWidth >= 768) {
             menuToggle.setAttribute("aria-expanded", "false");
             headerNav.classList.remove("is-open");
@@ -29,7 +29,7 @@ if (menuToggle && headerNav) {
 const filtroCategoria = document.getElementById("filtro-categoria");
 const tarjetas = document.querySelectorAll(".tarjeta");
 
-filtroCategoria.addEventListener("change", () => {
+filtroCategoria.addEventListener("change", function() {
     const categoriaSeleccionada = filtroCategoria.value;
 
     tarjetas.forEach(tarjeta => {
@@ -46,7 +46,7 @@ filtroCategoria.addEventListener("change", () => {
 const botonesDetalle = document.querySelectorAll(".btn-detalle");
 
 botonesDetalle.forEach(boton => {
-    boton.addEventListener("click", () => {
+    boton.addEventListener("click", function() {
         const tarjeta = boton.closest(".tarjeta");
         const descripcion = tarjeta.querySelector(".tarjeta-descripcion");
 
